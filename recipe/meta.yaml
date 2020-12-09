@@ -1,0 +1,29 @@
+{% set name = "telegraf" %}
+{% set version = "1.16.3" %}
+
+package:
+  name: {{ name|lower }}-server
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://dl.influxdata.com/telegraf/releases/{{ name }}-{{ version }}_static_linux_amd64.tar.gz
+  sha256: b4a5e60eb4f0963377f56eefc8071fc84caff5e7abced4365dd91204b5bb51e0
+
+build:
+  number: 1
+  no_link:
+    - etc/*
+    - var/log/telegraf/*
+  skip: true  # [win]
+
+about:
+  home: https://www.influxdata.com/
+  license: MIT-Clause
+  license_family: MIT
+  license_file: LICENSE
+  summary: Telegraf is an agent for collecting, processing, aggregating, and writing metrics.
+  description: Telegraf is an agent for collecting, processing, aggregating, and writing metrics.
+  doc_url: https://docs.influxdata.com/
+  dev_url: https://github.com/influxdata/telegraf
+
